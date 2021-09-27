@@ -3,7 +3,7 @@ public class RocketShip {
         arrow();
         shaft();
         arrow();
-    }// end main method
+    }// end main 
 
     public static void arrow() {
         System.out.println("   /\\ \n  /  \\ \n /    \\");
