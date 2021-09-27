@@ -7,7 +7,7 @@ public class RocketShip {
 
     public static void arrow() {
         System.out.println("   /\\ \n  /  \\ \n /    \\");
-    }// end box method
+    }// end arrow method
 
     public static void shaft() {
         System.out.println("+------+\n|      |\n|      |\n+------+");
