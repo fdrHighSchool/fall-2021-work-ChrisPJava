@@ -3,15 +3,19 @@ public class RocketShip {
         arrow();
         shaft();
         arrow();
-    }// end main 
+    }// end main
 
     public static void arrow() {
         System.out.println("   /\\ \n  /  \\ \n /    \\");
     }// end arrow method
 
     public static void shaft() {
-        System.out.println("+------+\n|      |\n|      |\n+------+");
+        box();
         System.out.println("|United|\n|States|");
-        System.out.println("+------+\n|      |\n|      |\n+------+");
+        box();
     }//end shaft method
+
+    public static void box() {
+      System.out.println("+------+\n|      |\n|      |\n+------+");
+    }
 }// end class
