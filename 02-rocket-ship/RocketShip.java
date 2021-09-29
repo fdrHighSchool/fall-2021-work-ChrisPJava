@@ -17,5 +17,5 @@ public class RocketShip {
 
     public static void box() {
       System.out.println("+------+\n|      |\n|      |\n+------+");
-    }
+    }// end box method
 }// end class
