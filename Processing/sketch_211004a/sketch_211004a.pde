@@ -10,14 +10,27 @@ void draw(){
   background(148,216,255); //background color
   stroke(16);
 
+  line(x-150,y-150,y-150,x-150);//parallel-4
+  line(x-200,y-200,y-200,x-200);//parallel-4
+  line(x-200,y-200,y-150,x-150);//slant-4
+
+  line(x-100,y-100,y-100,x-100);//parallel-3
+  line(x-150,y-150,y-150,x-150);//parallel-3
+  line(x-150,y-150,y-100,x-100);//slant-3
+
+  line(x-50,y-50,y-50,x-50);//parallel-2
+  line(x-100,y-100,y-100,x-100);//parallel-2
+  line(x-100,y-100,y-50,x-50);//slant-2
+
   line(x,y,y,x);//parallel-1
   line(x-50,y-50,y-50,x-50);//parallel-1
   line(x-50,y-50,y,x);//slant-1
 
-  // main reference lines
+  //main reference lines
   line(x+50,y+50,y+50,x+50);//parallel
   line(x,y,y,x);//parallel
   line(x,y,y+50,x+50);//slant
+  //main reference lines
 
   line(x+100,y+100,y+100,x+100);//parallel2
   line(x+50,y+50,y+50,x+50);//parallel2
