@@ -1,13 +1,12 @@
 void setup(){
-  size(800,600);
-  background(148,216,255); //background color
+  size(1200,800);
 }
 
 void draw(){
   int x = mouseX;
   int y = mouseY;
   stroke(16);
-  background(148,216,255);
+  background(148,216,255);//background color
 
   line(x-150,y-150,y-150,x-150);//parallel-4
   line(x-200,y-200,y-200,x-200);//parallel-4
@@ -51,10 +50,14 @@ void draw(){
   line(x+200,y+200,y+200,x+200);//parallel6
   line(x+250,y+250,y+300,x+300);//slant6
 
-  line(x-200,y-200,x+300,y+300);//long line
-  line(y-200,x-200,y+300,x+300);//long line
+  line(x-200,y-200,x+350,y+350);//long line top
+  line(y-250,x-250,y+300,x+300);//long line bottom
 
-  System.out.println("x is:"+ x);
-  System.out.println("y is:"+ y);
+  line(y+300,x+300,x+350,y+350);//right side right triangle
+  line(y-250,x-250,x-200,y-200);//left side right triangle
+
+
+  System.out.println("x is: "+ x);
+  System.out.println("y is: "+ y);
 
 }
