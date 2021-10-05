@@ -6,7 +6,7 @@ void draw(){
   int x = mouseX;
   int y = mouseY;
   stroke(16);
-  background(148,216,255);//background color
+  background(x,x,y);//background color
 
   line(x-150,y-150,y-150,x-150);//parallel-4
   line(x-200,y-200,y-200,x-200);//parallel-4
