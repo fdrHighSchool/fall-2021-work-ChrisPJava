@@ -1,9 +1,17 @@
-int x;
-int y;
-int yint = 700;
-int move;
-int press;
+int t1 = 700;
+int t2 = 675;
+int t3 = 710;
+int t4 = 720;
+int x1 = 730;
+int x2 = 770;
+int x3 = 750;
+int x4 = 740;
+int x5 = 760;
+int x6 = 720;
+int x7 = 780;
+int signal;
 boolean motion = true;
+boolean turn = false;
 
 void setup() {
   size(1200,800);
@@ -53,37 +61,121 @@ void setup() {
 
   //stop text and post
   stroke(0);
-  textSize(24);
+  textSize(23);
   line(742,583,742,650);
   fill(255,255,255);
-  text("STOP",714,561);
+  text("STOP",713,560);
   // end stop sign
   
 }
 
-void draw() {
-  x = mouseX;
-  y = mouseY;
+void draw() { 
   
-  
-  if(yint <= 590) {
+  if(t1 <= 570) {
     motion = false;
-    textSize(20);
-    text("SIGNAL BEFORE TURNING",750,460);
+    textSize(40);
+    noStroke();
+    textSize(25);
+    fill(255,255,0);
+    text("SIGNAL BEFORE YOUR TURN! (E)",450,250);
+    stroke(0);
+    if(signal > 6){
+      fill(255,255,0);
+      text("TURN! (D)",570,290);
+      turn = true;
+    }
+  }    
+    
+  if(x1 >= 850) {
+    turn = false;
+    textSize(25);
+    fill(255,255,0);
+    text("YOU SIGNALED BEFORE YOUR TURN, THANK YOU!",300,150);
   }
   
-  //reference 
-  System.out.println("x is "+ mouseX);
-  System.out.println("y is "+ mouseY);
- 
 }
 
+//user control w key and d key and e key
 void keyPressed() {
-  move = 1;
-  if(motion == true) {
-    if(keyCode == 87) {
-       yint = yint - move;
-       rect(650,yint,60,90);
-     }
+   int move = 1;
+   
+   if((keyCode == 69)&&(motion == false)) {
+     fill(255,255,0);
+     rect(680,t3,20,10);
+   }
+   
+   if((keyCode == 87)&&(motion == true)) {
+    //car body v1
+    t1 = t1 - move;
+    fill(0,10,100);
+    stroke(0);
+    rect(650,t1,80,30);
+    noStroke();
+    t2 = t2 - move;
+    rect(650,t2,50,20);
+    fill(0,200,200);
+    // windshield
+    rect(650,t2,35,10);
+    fill(200,0,0);
+    stroke(0);
+    //blinkers
+    t3 = t3 - move;
+    rect(620,t3,20,10);
+    rect(680,t3,20,10);
+    //wheels
+    fill(30,30,30);
+    t4 = t4 - move;
+    rect(625,t4,20,10);
+    rect(675,t4,20,10);
+    noStroke();
+  }
+
+  if((keyCode == 68)&&(turn == true)) {
+    //car body v2
+    // wheels
+    x1 = x1 + move;
+    x2 = x2 + move;
+    stroke(0);
+    fill(30,30,30);
+    circle(x1,476,20);
+    circle(x2,476,20);
+    // body
+    fill(0,10,100);
+    x3 = x3 + move;
+    rect(x3,455,80,30);
+    rect(x3,430,50,20);
+    fill(0,200,200);
+    // side windows
+    x4 = x4 + move;
+    x5 = x5 + move;
+    rect(x4,430,15,10);
+    rect(x5,430,15,10);
+    // blinkers & headlights
+    fill(200,0,0);
+    x6 = x6 + move;
+    rect(x6,460,20,10);
+    fill(150,150,150);
+    x7 = x7 + move;
+    rect(x7,460,20,10);
+    noStroke();
+   }
+   
+}
+
+void keyReleased() {
+  if((motion == false) && (keyCode == 69)) {
+    fill(200,0,0);
+    rect(680,t3,20,10);
+    signal +=1;
   }
 }
+
+
+/* reference for numbers
+  System.out.println(t1);
+  System.out.println(t2);
+  System.out.println(t3);
+  System.out.println(t4);
+  System.out.println("x1: "+ x1);
+  System.out.println(keyCode);
+*/
