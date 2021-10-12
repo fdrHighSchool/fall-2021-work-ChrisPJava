@@ -77,7 +77,7 @@ void draw() {
     noStroke();
     textSize(25);
     fill(255,255,0);
-    text("SIGNAL BEFORE YOUR TURN! (E)",450,250);
+    text("SIGNAL BEFORE YOU TURN! (E)",450,250);
     stroke(0);
     if(signal > 6){
       fill(255,255,0);
@@ -90,7 +90,7 @@ void draw() {
     turn = false;
     textSize(25);
     fill(255,255,0);
-    text("YOU SIGNALED BEFORE YOUR TURN, THANK YOU!",300,150);
+    text("YOU SIGNALED BEFORE YOU TURN, THANK YOU!",300,150);
   }
   
 }
