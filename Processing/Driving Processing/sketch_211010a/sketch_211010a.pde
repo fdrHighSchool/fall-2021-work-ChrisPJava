@@ -1,9 +1,10 @@
-int x;
-int y;
-int yint = 700;
+int t1 = 700;
+int t2 = 675;
+int t3 = 710;
+int t4 = 720;
 int move;
-int press;
 boolean motion = true;
+boolean turn = false;
 
 void setup() {
   size(1200,800);
@@ -53,37 +54,76 @@ void setup() {
 
   //stop text and post
   stroke(0);
-  textSize(24);
+  textSize(23);
   line(742,583,742,650);
   fill(255,255,255);
-  text("STOP",714,561);
+  text("STOP",713,560);
   // end stop sign
   
 }
 
-void draw() {
-  x = mouseX;
-  y = mouseY;
+void draw() { 
   
-  
-  if(yint <= 590) {
+  if(t1 <= 570) {
     motion = false;
-    textSize(20);
-    text("SIGNAL BEFORE TURNING",750,460);
-  }
-  
-  //reference 
-  System.out.println("x is "+ mouseX);
-  System.out.println("y is "+ mouseY);
- 
+    textSize(40);
+    stroke(0);
+    delay(500);
+    for(int i = 0;i<=5;i++) {
+      fill(255,255,0);
+      rect(680,t3,20,10);
+      delay(50);
+      fill(255,0,0);
+      rect(680,t3,20,10);
+      delay(500);
+    }
 }
 
+  /* reference for numbers
+  System.out.println("x is "+ mouseX);
+  System.out.println("y is "+ mouseY);
+  System.out.println(t1);
+  System.out.println(t2);
+  System.out.println(t3);
+  System.out.println(t4);
+  System.out.println(keyCode);
+  */
+}
+
+//user control w key and d key
 void keyPressed() {
   move = 1;
   if(motion == true) {
     if(keyCode == 87) {
-       yint = yint - move;
-       rect(650,yint,60,90);
-     }
+      t1 = t1 - move;
+      System.out.print(t1);
+      fill(0,10,100);
+      stroke(0);
+      rect(650,t1,80,30);
+      noStroke();
+      t2 = t2 - move;
+      rect(650,t2,50,20);
+      fill(0,200,200);
+      rect(650,t2,35,10);
+      fill(200,0,0);
+      stroke(0);
+      //blinkers
+      t3 = t3 - move;
+      rect(620,t3,20,10);
+      rect(680,t3,20,10);
+      
+      //wheels
+      fill(30,30,30);
+      t4 = t4 - move;
+      rect(625,t4,20,10);
+      rect(675,t4,20,10);
+      noStroke();
+    }
   }
+
+  if(turn == true) {
+    if(keyCode == 68) {
+      
+     }
+   }
 }
