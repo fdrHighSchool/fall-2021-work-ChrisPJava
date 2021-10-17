@@ -51,11 +51,11 @@ public class GuessingGame {
                     msg = r2.nextInt(2);
                     //random message for correct guess
                     if(msg == 0) {   
-                        System.out.println("Correct, the number is "+ ranNum +".\n");
+                        System.out.println("Correct, the number is "+ ranNum +". Guesses left: "+ g +".\n");
                     }
 
                     else if(msg == 1) {
-                        System.out.println("You guessed the right number, "+ ranNum +".\n");
+                        System.out.println("You guessed the right number, "+ ranNum +". Guesses left: "+ g +".\n");
                     }
                     ranNum = ((r2.nextInt(ra)) + 1);
                 }
