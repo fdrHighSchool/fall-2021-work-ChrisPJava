@@ -75,7 +75,6 @@ public class GuessingGame {
                         System.out.println("Wrong, keep guessing! Guesses left: "+ g +"\n");
                     }
                 }// end while loop
-
             }// end while loop
 
             // **replay option**
@@ -87,7 +86,7 @@ public class GuessingGame {
                 c = s2.nextInt();
                 g = 3;
 
-                // if statements to set variables for the method w/ choice
+                // if statements to set variables for the rerun of the method w/ choice
                 if(c == 1){
                     ra = 10;
                 }
