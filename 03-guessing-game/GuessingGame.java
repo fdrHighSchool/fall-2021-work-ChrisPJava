@@ -43,7 +43,6 @@ public class GuessingGame {
             int ranNum = ((r2.nextInt(ra)) + 1);
 
             while(g != 0) {
-                System.out.println("RN:"+ ranNum);
                 System.out.println("Guess a number from 1-"+ ra +"!");
                 c = s2.nextInt();
                 
@@ -52,11 +51,11 @@ public class GuessingGame {
                     msg = r2.nextInt(2);
                     //random message for correct guess
                     if(msg == 0) {   
-                        System.out.println("Correct!\n");
+                        System.out.println("Correct, the number is "+ ranNum +".\n");
                     }
 
                     else if(msg == 1) {
-                        System.out.println("You guessed the right number!\n");
+                        System.out.println("You guessed the right number, "+ ranNum +".\n");
                     }
                     ranNum = ((r2.nextInt(ra)) + 1);
                 }
@@ -65,14 +64,19 @@ public class GuessingGame {
                 else {
                     msg = r2.nextInt(2);
                     //random message for wrong guess
-                    if(msg == 0) {
+                    if(g == 1) {
                         g -= 1;  
-                        System.out.println("Incorrect, try again! Guesses left: "+ g +"\n");
+                        System.out.println("Incorrect, you have no more guesses!\n");
+                    }
+
+                    else if(msg == 0) {
+                        g -= 1;  
+                        System.out.println("Incorrect, try again! Guesses left: "+ g +".\n");
                     }
 
                     else if(msg == 1) {
                         g -= 1;   
-                        System.out.println("Wrong, keep guessing! Guesses left: "+ g +"\n");
+                        System.out.println("Wrong, keep guessing! Guesses left: "+ g +".\n");
                     }
                 }// end while loop
             }// end while loop
@@ -82,6 +86,7 @@ public class GuessingGame {
             c = s2.nextInt();
 
             if(c == 1) {
+                System.out.println("\nChoose a game mode...");
                 System.out.print("\nType '1' for numbers 1-10\nType '2' for numbers 1-50\nType '3' for numbers 1-100\nChoice: ");
                 c = s2.nextInt();
                 g = 3;
@@ -100,7 +105,7 @@ public class GuessingGame {
 
             else {
                 p = true;
-                System.out.println("Thank you for playing!");
+                System.out.println("\nThank you for playing!");
             }
         }// end while loop
 
