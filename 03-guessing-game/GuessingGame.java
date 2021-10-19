@@ -33,12 +33,13 @@ public class GuessingGame {
     }// end main method
 
     public static void game(int ra, int g, boolean p) {
-      int c;
+        int c = 0;
+        String a = "";
+        System.out.println("\nGuesses left: "+ g);
 
         while(!(p)) {
             //setup dsplay message
             int msg = r.nextInt(2);
-            System.out.println("\nGuesses left: "+ g);
             int ranNum = ((r.nextInt(ra)) + 1);
 
             while(g != 0) {
@@ -77,32 +78,32 @@ public class GuessingGame {
                         g -= 1;
                         System.out.println("Wrong, keep guessing! Guesses left: "+ g +".\n");
                     }
-                }// end while loop
+                }
             }// end while loop
 
             // **replay option**
-            System.out.println("Thank you for playing! Would you like to play again?\nType '1' for yes, type '2' for no.");
-            c = s.nextInt();
+            System.out.println("Thank you for playing! Would you like to play again?\nType 'y' for yes, type 'n' for no.");
+            a = s.nextLine();
 
-            if(c == 1) {
+            if(a.equals("y")) {
                 System.out.println("\nChoose a game mode...");
                 System.out.print("\nType '1' for numbers 1-10\nType '2' for numbers 1-50\nType '3' for numbers 1-100\nChoice: ");
                 c = s.nextInt();
                 g = 3;
 
                 // if statements to set variables for the rerun of the method w/ choice
-                if(c == 1){
+                if(c == 1) {
                     ra = 10;
                 }
-                else if(c == 2){
+                else if(c == 2) {
                     ra = 50;
                 }
-                else if(c == 3){
+                else if(c == 3) {
                     ra = 100;
                 }
             }
 
-            else {
+            else if(a.equals("n")) {
                 p = true;
                 System.out.println("\nThank you for playing!");
             }
