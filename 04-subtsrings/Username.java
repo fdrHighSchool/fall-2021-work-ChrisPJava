@@ -22,6 +22,22 @@ public class Username {
     username += fName.substring(0, 1); // only using the first letter of the first name
     username += lName.substring(lName.length()-2); // final two letters depend on the length of the last name
 
+    //grab month of birth, 2 chars
+    if(bDay.indexOf("/") == 2) {
+      username += bDay.substring(0,2);
+      username += bDay.substring(bDay.length()-2);
+    }
+    else {
+      username += "0";
+      username += bDay.substring(0,1);
+      username += bDay.substring(bDay.length()-2);
+    }
 
+    //domain name
+    username += "@anonymous.org";
+
+    System.out.println("Your username is: " + username);
+   // **domain name** @compsci.com OR @csaiscool.com
+   s.close();
   }// end main method
 }// end class
