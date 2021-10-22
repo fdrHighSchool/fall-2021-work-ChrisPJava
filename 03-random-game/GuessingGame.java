@@ -34,7 +34,6 @@ public class GuessingGame {
 
     public static void game(int ra, int g, boolean p) {
         int c = 0;
-        String a = "";
         System.out.println("\nGuesses left: "+ g);
 
         while(!(p)) {
@@ -83,13 +82,16 @@ public class GuessingGame {
 
             // **replay option**
             System.out.println("Thank you for playing! Would you like to play again?\nType 'y' for yes, type 'n' for no.");
-            a = s.nextLine();
+            String a = s.nextLine();
 
+            // replay is true
             if(a.equals("y")) {
                 System.out.println("\nChoose a game mode...");
+                g = 3;
+                System.out.println("\nGuesses left: "+ g);
                 System.out.print("\nType '1' for numbers 1-10\nType '2' for numbers 1-50\nType '3' for numbers 1-100\nChoice: ");
                 c = s.nextInt();
-                g = 3;
+
 
                 // if statements to set variables for the rerun of the method w/ choice
                 if(c == 1) {
@@ -103,6 +105,7 @@ public class GuessingGame {
                 }
             }
 
+            //replay is false
             else if(a.equals("n")) {
                 p = true;
                 System.out.println("\nThank you for playing!");
