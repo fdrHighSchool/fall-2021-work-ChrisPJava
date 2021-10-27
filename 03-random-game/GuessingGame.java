@@ -82,7 +82,7 @@ public class GuessingGame {
 
             // **replay option**
             System.out.println("Thank you for playing! Would you like to play again?\nType 'y' for yes, type 'n' for no.");
-            String a = s.nextLine();
+            String a = "n";
 
             // replay is true
             if(a.equals("y")) {
