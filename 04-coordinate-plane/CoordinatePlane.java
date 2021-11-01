@@ -31,7 +31,7 @@ public class CoordinatePlane {
     /*
     ~ Name: CoordinatePlane
     ~ Purpose: To find the diagonal distance between to points using the distance formula.
-    ~ Input: Integer values of the first coordinate pair and second coordinate pair.
+    ~ Input: Integer values of the first and second coordinate pair.
     ~ Return: Outputs the value of the distance between the two coordinate pairs.
     */
     public static void coordinatePlane(int x1, int y1, int x2, int y2) {
@@ -55,10 +55,10 @@ public class CoordinatePlane {
     }// end CooridnatePlane method
 
     /*
-    ~ Name:
-    ~ Purpose:
-    ~ Input:
-    ~ Return:
+    ~ Name: taxicabDistance
+    ~ Purpose: To find the taxicab distance between the two points.
+    ~ Input: Integer values of the first and second coordinate pair.
+    ~ Return: Outputs the taxicab distance between the teo coordinate points.
     */
     public static void taxicabDistance(int x1, int y1, int x2, int y2) {
         int dis = 0;
