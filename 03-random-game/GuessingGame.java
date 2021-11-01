@@ -2,11 +2,8 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class GuessingGame {
-  //global scanner and random
-  static Scanner s = new Scanner(System.in);
-  static Random r = new Random();
-
     public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
         // main variables
         int guess = 3;
         int rg = 0;
@@ -33,6 +30,9 @@ public class GuessingGame {
     }// end main method
 
     public static void game(int ra, int g, boolean p) {
+        Scanner s2 = new Scanner(System.in);// scanner instance
+        Random r = new Random();// random
+
         int c = 0;
         System.out.println("\nGuesses left: "+ g);
 
@@ -43,7 +43,7 @@ public class GuessingGame {
 
             while(g != 0) {
                 System.out.println("Guess a number from 1-"+ ra +"!");
-                c = s.nextInt();
+                c = s2.nextInt();
 
                 //if guess correct
                 if(c == ranNum) {
@@ -82,15 +82,20 @@ public class GuessingGame {
 
             // **replay option**
             System.out.println("Thank you for playing! Would you like to play again?\nType 'y' for yes, type 'n' for no.");
+<<<<<<< HEAD
             String a = "n";
 
+=======
+            String a = s2.nextLine();
+            
+>>>>>>> 82ba735c9aa6bdbd49ad78aa0c7b5cdae2c2b3ce
             // replay is true
             if(a.equals("y")) {
                 System.out.println("\nChoose a game mode...");
                 g = 3;
                 System.out.println("\nGuesses left: "+ g);
                 System.out.print("\nType '1' for numbers 1-10\nType '2' for numbers 1-50\nType '3' for numbers 1-100\nChoice: ");
-                c = s.nextInt();
+                c = s2.nextInt();
 
 
                 // if statements to set variables for the rerun of the method w/ choice
@@ -111,5 +116,12 @@ public class GuessingGame {
                 System.out.println("\nThank you for playing!");
             }
         }// end while loop
+        s2.close();// scanner close
     }// end game method
 }// end class GuessingGame
+
+/* 
+**NOTE** - Attempted to fix a bug where the statement on line 85 is outputing twice, 
+used separate scanners, closed them at different locations, checked if there's an issue with the loops, 
+and nothing changed. 
+*/
