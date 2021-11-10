@@ -3,6 +3,14 @@ import java.util.*;
 public class CoordinatePlane {
     public static void main(String[] args) {
         //new scanner instance
+        /*
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Which of the following do you want?");
+        System.out.print("1. Distance Calculator \n2. Area Calculator");
+        int choice = s.nextInt();
+        */
+
         Scanner s = new Scanner(System.in);
 
         //program introduction
@@ -18,15 +26,90 @@ public class CoordinatePlane {
         int y1 = intY(p1);
         int y2 = intY(p2);
 
+        /*
+        if(choice == 1) {
+          distance();
+        }
+        else if(choice == 2) {
+          area();
+        }
         //CoordinatePlane method call
         coordinatePlane(x1, y1, x2, y2);
 
-        //taxicabMethod method call
+        //taxicabDistance method method call
         taxicabDistance(x1, y1, x2, y2);
+
+        //slope method call
+        slope(x1, y1, x2, y2);
 
         //scanner close
         s.close();
+        */
+
+        System.out.println(slope(x1, x2, y1, y2));
+
     }// end main method
+
+    public static void distance() {
+      //new scanner instance
+      Scanner s = new Scanner(System.in);
+
+      //program introduction
+      System.out.println("Hey there! I'm your coordinate plane and ready to graph some points.");
+      System.out.println("\nWhat's your first pair in format: (x, y)");
+      String p1 = s.nextLine();
+
+      System.out.println("\nWhat's your second pair in format: (x, y)");
+      String p2 = s.nextLine();
+
+      int x1 = intX(p1);
+      int x2 = intX(p2);
+      int y1 = intY(p1);
+      int y2 = intY(p2);
+
+    }// end distance method
+
+    /*
+    public static void area() {
+      //new scanner instance
+      Scanner s = new Scanner(System.in);
+
+      System.out.println("What shape dp you want to know the area of?");
+      System.out.println("1. Square\n"");
+
+      int choice = s.nextInt();
+
+      if(choice == 1){
+        square();
+      }
+    }//end area method
+    */
+
+    /*
+    public static void square() {
+      //new scanner instance
+      Scanner s = new Scanner(System.in);
+
+    }
+    */
+
+    public static double slope(int x1, int y1, int x2, int y2) {
+      double dx1 = x1;
+      double dy1 = y1;
+      double dx2 = x2;
+      double dy2 = y2;
+
+      if(dx1 != dx2) {
+        return (dy2 - dy1)/(dx2 - dx1);
+      }
+      else if(return Infinity) {
+        return 1.0;
+
+      }
+      else {
+        return (dy2 - dy1)/(dx2 - dx1);
+      }
+    }
 
     /*
     ~ Name: CoordinatePlane
