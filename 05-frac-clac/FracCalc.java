@@ -23,6 +23,8 @@ public class FracCalc {
             System.out.println("\n" + produceAnswer(frac));
           }
         }
+
+        s.close();
     }//end main method
 
     /**
@@ -41,29 +43,37 @@ public class FracCalc {
 
         // Checkpoint 2: Return the second operand as a string representing each part.
         //               Example "4/5 * 1_2/4" returns "whole:1 numerator:2 denominator:4"
-        /*
-        spaceOrNum = secOper.substring(0, secOper.indexOf("/")-1);
+        String whole = "";
+        String nume = "";
+        String prenume = input.substring(input.indexOf(" ")+ 3);
+        String demo = input.substring(input.lastIndexOf("/")+ 1);
 
-        if(spaceOrNum.equals()) {
-
+        if(prenume.contains("_") == false && prenume.contains("/") == false) {
+            whole = prenume;
+            nume = "0";
+            demo = "1";
+            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+            return prenume;
         }
-        else if(s) {
-
+        else if(prenume.contains("_") == true && prenume.contains("/") == true) {
+            whole = prenume.substring(0, prenume.indexOf("_"));
+            nume = prenume.substring(prenume.indexOf("_")+ 1, prenume.indexOf("/"));
+            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+            return prenume;
+        }
+        else {
+            whole = "0";
+            nume = prenume.substring(0, prenume.indexOf("/"));
+            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+            return prenume;
         }
 
-        String whole = secOper.substring(0,secOper.lastIndexOf("_"));
-        String nume = secOper.substring(secOper.indexOf("_")+ 1, secOper.lastIndexOf("/"));
-        String demo = secOper.substring(secOper.lastIndexOf("/")+ 1);
-        */
         // Checkpoint 3: Evaluate the formula and return the result as a fraction.
         //               Example "4/5 * 1_2/4" returns "6/5".
         //               Note: Answer does not need to be reduced, but it must be correct.
 
-
-
         // Final project: All answers must be reduced.
         //               Example "4/5 * 1_2/4" returns "1_1/5".
-        return secOper;
     }//end produceAnswer method
 
     // TODO: Fill in the space below with helper methods
@@ -91,5 +101,4 @@ public class FracCalc {
 
       return 0;
     }//end leastCommonMultiple
-
 }//end class
