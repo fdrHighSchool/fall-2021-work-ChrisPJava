@@ -37,44 +37,69 @@ public class FracCalc {
     public static String produceAnswer(String input){
         // TODO: Implement this function to produce the solution to the input
         // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
-        String frstOper = input.substring(0, input.indexOf(" "));
+
+        String frstOper = input.substring(0, input.indexOf(" "));//FRAC1
         String oper = input.substring(input.indexOf(" ")+ 1, input.indexOf(" ")+ 2);
-        String secOper = input.substring(input.indexOf(" ")+ 3);
+        String secOper = input.substring(input.indexOf(" ")+ 3);//FRAC2
 
         // Checkpoint 2: Return the second operand as a string representing each part.
         //               Example "4/5 * 1_2/4" returns "whole:1 numerator:2 denominator:4"
         String whole = "";
         String nume = "";
-        String prenume = input.substring(input.indexOf(" ")+ 3);
         String demo = input.substring(input.lastIndexOf("/")+ 1);
 
-        if(prenume.contains("_") == false && prenume.contains("/") == false) {
-            whole = prenume;
+        if(secOper.contains("_") == false && secOper.contains("/") == false) {
+            whole = secOper;
             nume = "0";
             demo = "1";
-            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
-            return prenume;
+            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
         }
-        else if(prenume.contains("_") == true && prenume.contains("/") == true) {
-            whole = prenume.substring(0, prenume.indexOf("_"));
-            nume = prenume.substring(prenume.indexOf("_")+ 1, prenume.indexOf("/"));
-            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
-            return prenume;
+        else if(secOper.contains("_") == true && secOper.contains("/") == true) {
+            whole = secOper.substring(0, secOper.indexOf("_"));
+            nume = secOper.substring(secOper.indexOf("_")+ 1, secOper.indexOf("/"));
+            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
         }
         else {
             whole = "0";
-            nume = prenume.substring(0, prenume.indexOf("/"));
-            prenume = "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
-            return prenume;
+            nume = secOper.substring(0, secOper.indexOf("/"));
+            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
         }
 
         // Checkpoint 3: Evaluate the formula and return the result as a fraction.
         //               Example "4/5 * 1_2/4" returns "6/5".
         //               Note: Answer does not need to be reduced, but it must be correct.
 
+        int wholeInt = convertStr(whole);
+        int numeInt = convertStr(nume);
+        int demoInt = convertStr(demo);
+
+
+
         // Final project: All answers must be reduced.
         //               Example "4/5 * 1_2/4" returns "1_1/5".
     }//end produceAnswer method
+
+    public static int convertStr(String a) {
+      int conv = Integer.parseInt(a);
+
+      return conv;
+    }
+
+    public static int multiply(int wh, int nu, int de) {
+      return 0;
+    }
+
+    public static int divide(int wh, int nu, int de) {
+      return 0;
+    }
+
+    public static int add(int wh, int nu, int de) {
+      return 0;
+    }
+
+    public static int subtract(int wh, int nu, int de) {
+      return 0;
+    }
 
     // TODO: Fill in the space below with helper methods
 
