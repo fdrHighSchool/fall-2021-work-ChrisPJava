@@ -38,7 +38,7 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
         // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
 
-        String frstOper = input.substring(0, input.indexOf(" "));//FRAC1
+        String firstOper = input.substring(0, input.indexOf(" "));//FRAC1
         String oper = input.substring(input.indexOf(" ")+ 1, input.indexOf(" ")+ 2);
         String secOper = input.substring(input.indexOf(" ")+ 3);//FRAC2
 
@@ -46,32 +46,53 @@ public class FracCalc {
         //               Example "4/5 * 1_2/4" returns "whole:1 numerator:2 denominator:4"
         String whole = "";
         String nume = "";
-        String demo = input.substring(input.lastIndexOf("/")+ 1);
+        String demo = firstOper.substring(firstOper.indexOf("/")+ 1);
 
-        if(secOper.contains("_") == false && secOper.contains("/") == false) {
-            whole = secOper;
-            nume = "0";
-            demo = "1";
-            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+        String whole2 = "";
+        String nume2 = "";
+        String demo2 = secOper.substring(secOper.lastIndexOf("/")+ 1);
+
+        // **NUMBER SEPARATION FOR FIRST OPERAND**
+        if(firstOper.contains("_") == false && firstOper.contains("/") == false) {
+          whole = firstOper;
+          nume = "0";
+          demo = "1";
         }
-        else if(secOper.contains("_") == true && secOper.contains("/") == true) {
-            whole = secOper.substring(0, secOper.indexOf("_"));
-            nume = secOper.substring(secOper.indexOf("_")+ 1, secOper.indexOf("/"));
-            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+        else if (firstOper.contains("_") == true && firstOper.contains("/") == true) {
+          whole = firstOper.substring(0, firstOper.indexOf("_"));
+          nume = firstOper.substring(firstOper.indexOf("_")+ 1, firstOper.indexOf("/"));
         }
         else {
-            whole = "0";
-            nume = secOper.substring(0, secOper.indexOf("/"));
-            //return "Whole: "+ whole +" Numerator: "+ nume +" Denominator: "+ demo;
+          whole = "0";
+          nume = firstOper.substring(0, firstOper.indexOf("/"));
         }
+
+        // **NUMBER SEPARATION FOR SECOND OPERAND**
+        if(secOper.contains("_") == false && secOper.contains("/") == false) {
+            whole2 = secOper;
+            nume2 = "0";
+            demo2 = "1";
+        }
+        else if(secOper.contains("_") == true && secOper.contains("/") == true) {
+            whole2 = secOper.substring(0, secOper.indexOf("_"));
+            nume2 = secOper.substring(secOper.indexOf("_")+ 1, secOper.indexOf("/"));
+        }
+        else {
+            whole2 = "0";
+            nume2 = secOper.substring(0, secOper.indexOf("/"));
+        }
+
+        int wholeInt = converStr(whole);
+        int numeInt = convertStr(nume);
+        int demoInt = convertStr(demo);
+
+        int wholeInt2 = convertStr(whole2);
+        int numeInt2 = convertStr(nume2);
+        int demoInt2 = convertStr(demo2);
 
         // Checkpoint 3: Evaluate the formula and return the result as a fraction.
         //               Example "4/5 * 1_2/4" returns "6/5".
         //               Note: Answer does not need to be reduced, but it must be correct.
-
-        int wholeInt = convertStr(whole);
-        int numeInt = convertStr(nume);
-        int demoInt = convertStr(demo);
 
 
 
@@ -79,13 +100,7 @@ public class FracCalc {
         //               Example "4/5 * 1_2/4" returns "1_1/5".
     }//end produceAnswer method
 
-    public static int convertStr(String a) {
-      int conv = Integer.parseInt(a);
-
-      return conv;
-    }
-
-    public static int multiply(int wh, int nu, int de) {
+    public static int multiply(int wh, int nu, int de, int wh2, int nu2, int de2) {
       return 0;
     }
 
@@ -126,4 +141,10 @@ public class FracCalc {
 
       return 0;
     }//end leastCommonMultiple
+
+    public static int convertStr(String a) {
+      int conv = Integer.parseInt(a);
+
+      return conv;
+    }//end convertStr method
 }//end class
