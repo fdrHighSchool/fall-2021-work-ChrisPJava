@@ -39,7 +39,7 @@ public class FracCalc {
         // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
 
         String firstOper = input.substring(0, input.indexOf(" "));//FRAC1
-        String oper = input.substring(input.indexOf(" ")+ 1, input.indexOf(" ")+ 2);
+        String oper = input.substring(input.indexOf(" ")+ 1, input.lastIndexOf(" "));
         String secOper = input.substring(input.indexOf(" ")+ 3);//FRAC2
 
         // Checkpoint 2: Return the second operand as a string representing each part.
@@ -54,8 +54,8 @@ public class FracCalc {
 
         // **NUMBER SEPARATION FOR FIRST OPERAND**
         if(firstOper.contains("_") == false && firstOper.contains("/") == false) {
-          whole = firstOper;
-          nume = "0";
+          whole = "0";
+          nume = firstOper;
           demo = "1";
         }
         else if (firstOper.contains("_") == true && firstOper.contains("/") == true) {
@@ -69,8 +69,8 @@ public class FracCalc {
 
         // **NUMBER SEPARATION FOR SECOND OPERAND**
         if(secOper.contains("_") == false && secOper.contains("/") == false) {
-            whole2 = secOper;
-            nume2 = "0";
+            whole2 = "0";
+            nume2 = secOper;
             demo2 = "1";
         }
         else if(secOper.contains("_") == true && secOper.contains("/") == true) {
@@ -82,13 +82,20 @@ public class FracCalc {
             nume2 = secOper.substring(0, secOper.indexOf("/"));
         }
 
-        int wholeInt = converStr(whole);
+        int wholeInt = convertStr(whole);
         int numeInt = convertStr(nume);
         int demoInt = convertStr(demo);
 
         int wholeInt2 = convertStr(whole2);
         int numeInt2 = convertStr(nume2);
         int demoInt2 = convertStr(demo2);
+
+        if(wholeInt != 0) {
+          int a = toImp(wholeInt, numeInt, demoInt);
+          return "test" + a;
+        }
+
+        return 0;
 
         // Checkpoint 3: Evaluate the formula and return the result as a fraction.
         //               Example "4/5 * 1_2/4" returns "6/5".
@@ -100,19 +107,35 @@ public class FracCalc {
         //               Example "4/5 * 1_2/4" returns "1_1/5".
     }//end produceAnswer method
 
+    public static int toImp(int w, int n , int d) {
+      for(int i = 0; i < w; i++) {
+        n = n + w;
+      }
+      return n;
+    }
+
+    public static int add(int wh, int nu, int de, int wh2, int nu2, int de2) {
+
+    }
+
+    public static int subtract(int wh, int nu, int de, int wh2, int nu2, int de2) {
+
+
+
+      return 0;
+    }
+
     public static int multiply(int wh, int nu, int de, int wh2, int nu2, int de2) {
+
+
+
       return 0;
     }
 
-    public static int divide(int wh, int nu, int de) {
-      return 0;
-    }
+    public static int divide(int wh, int nu, int de, int wh2, int nu2, int de2) {
 
-    public static int add(int wh, int nu, int de) {
-      return 0;
-    }
 
-    public static int subtract(int wh, int nu, int de) {
+
       return 0;
     }
 
