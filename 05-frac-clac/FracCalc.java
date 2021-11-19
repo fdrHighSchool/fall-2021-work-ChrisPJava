@@ -90,49 +90,70 @@ public class FracCalc {
         int numeInt2 = convertStr(nume2);
         int demoInt2 = convertStr(demo2);
 
-        if(wholeInt != 0) {
-          int a = toImp(wholeInt, numeInt, demoInt);
-          return "test" + a;
+        if(wholeInt != 0 && wholeInt2 != 0) {
+          numeInt = toImp(wholeInt, numeInt, demoInt);
+          numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
         }
+        else if(wholeInt != 0) {
+          numeInt = toImp(wholeInt, numeInt, demoInt);
 
-        return 0;
+        }
+        else if(wholeInt2 != 0) {
+          numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
+
+        }
 
         // Checkpoint 3: Evaluate the formula and return the result as a fraction.
         //               Example "4/5 * 1_2/4" returns "6/5".
         //               Note: Answer does not need to be reduced, but it must be correct.
 
+        if(oper.equals("+")) {
+          return "Calculated fraction = " + add(numeInt, demoInt, numeInt2, demoInt2);
+        }
+        else if(oper.equals("-")) {
+          return "Calculated fraction = " + sub(numeInt, demoInt, numeInt2, demoInt2);
+        }
+        /*
+        else if(oper.equals("*")) {
 
+        }
+        else if(oper.equals("/")) {
 
+        }
+        */
         // Final project: All answers must be reduced.
         //               Example "4/5 * 1_2/4" returns "1_1/5".
+
+        return "";
+
     }//end produceAnswer method
 
     public static int toImp(int w, int n , int d) {
-      for(int i = 0; i < w; i++) {
-        n = n + w;
-      }
-      return n;
+      int newnume = w * d;
+      newnume = newnume + n;
+      return newnume;
     }
 
-    public static int add(int wh, int nu, int de, int wh2, int nu2, int de2) {
-
+    public static int add(int nu, int de, int nu2, int de2) {
+      int add = (nu * de2 + nu2 * de);
+      add = add / (de * de2);
+      return add;
     }
 
-    public static int subtract(int wh, int nu, int de, int wh2, int nu2, int de2) {
+    public static int sub(int nu, int de, int nu2, int de2) {
+      int sub = (nu * de2 - nu2 * de);
+      sub = sub / (de * de2);
+      return sub;
+    }
+
+    public static int mult(int nu, int de, int nu2, int de2) {
 
 
 
       return 0;
     }
 
-    public static int multiply(int wh, int nu, int de, int wh2, int nu2, int de2) {
-
-
-
-      return 0;
-    }
-
-    public static int divide(int wh, int nu, int de, int wh2, int nu2, int de2) {
+    public static int div(int wh, int nu, int de, int wh2, int nu2, int de2) {
 
 
 
