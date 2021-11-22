@@ -26,7 +26,7 @@ public class FracCalc {
   }//end main method
 
   /*
-  -N-> produceAnswer 
+  -N-> produceAnswer
   -P-> To Calculate the sum, diff, product, or quotient of two given fractions
   -I-> The whole expression of two fractions, String
   -R-> Returns a String with the calculated fraction result
@@ -87,46 +87,61 @@ public class FracCalc {
     int numeInt2 = convertStr(nume2);
     int demoInt2 = convertStr(demo2);
 
-    //Checks for 0
-    if(demoInt2 == 0 || demoInt == 0){
-      System.out.println("ERROR: Cannot divide by 0...");
-      System.exit(0);
+    //Makes it easier to do calculations
+    if(wholeInt != 0 && wholeInt2 != 0) {
+
+      numeInt = toImp(wholeInt, numeInt, demoInt);
+      numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
     }
-    else {
+    else if(wholeInt != 0) {
 
-      //Convert to improper fraction
-      //Makes it easier to do calculations
-      if(wholeInt != 0 && wholeInt2 != 0) {
+      numeInt = toImp(wholeInt, numeInt, demoInt);
+    }
+    else if(wholeInt2 != 0) {
 
-        numeInt = toImp(wholeInt, numeInt, demoInt);
-        numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
-      }
-      else if(wholeInt != 0) {
+      numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
+    }
 
-        numeInt = toImp(wholeInt, numeInt, demoInt);
-      }
-      else if(wholeInt2 != 0) {
-
-        numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
-      }
-
-      //Returns simplified result from both fractions
-      if(oper.equals("+")) {
-        return"Calculated result = "+ add(numeInt, demoInt, numeInt2, demoInt2);
-      }
-      else if(oper.equals("-")) {
-        return "Calculated result = "+ sub(numeInt, demoInt, numeInt2, demoInt2);
-      }
-      else if(oper.equals("*")) {
-        return "Calculated result = "+ mult(numeInt, demoInt, numeInt2, demoInt2);
+    //Returns simplified result from both fractions
+    String f = "";
+    if(oper.equals("+")) {
+      f = add(numeInt, demoInt, numeInt2, demoInt2);
+      if(f.equals("0")){
+        return "ERROR: Cannot divide by 0.";
       }
       else {
-        return "Calculated result = "+ div(numeInt, demoInt, numeInt2, demoInt2);
+        return "Calculated result = "+ add(numeInt, demoInt, numeInt2, demoInt2);
       }
-
-      //Does the final string to integer conversion to return a string
     }
-    return "";
+    else if(oper.equals("-")) {
+      f = mult(numeInt, demoInt, numeInt2, demoInt2);
+      if(f.equals("0")){
+        return "ERROR: Cannot divide by 0.";
+      }
+      else {
+        return "Calculated result = "+ sub(numeInt, demoInt, numeInt2, demoInt2);
+      }
+    }
+    else if(oper.equals("*")) {
+      f = mult(numeInt, demoInt, numeInt2, demoInt2);
+      if(f.equals("0")){
+        return "ERROR: Cannot divide by 0.";
+      }
+      else {
+        return "Calculated result = "+ mult(numeInt, demoInt, numeInt2, demoInt2);
+      }
+    }
+    else {
+      f = mult(numeInt, demoInt, numeInt2, demoInt2);
+      if(f.equals("0")){
+        return "ERROR: Cannot divide by 0.";
+      }
+      else {
+      return "Calculated result = "+ div(numeInt, demoInt, numeInt2, demoInt2);
+      }
+    }
+
+    //Does the final string to integer conversion to return a string
   }//end produceAnswer method
 
   /*
@@ -141,59 +156,71 @@ public class FracCalc {
     return newnume;
   }// end toImp method
 
-  /*  
+  /*
   -N-> add
   -P-> To add fractions
   -I-> Both numerators and fractions as integers
   -R-> Improper added fraction
   */
   public static String add(int nu, int de, int nu2, int de2) {
+    if(de == 0 || de2 == 0){
+      return "0";
+    }
     int add = (nu * de2) + (nu2 * de);
     int add2 = (de * de2);
     String t = add +"/"+ add2;
     return t;
   }// end add method
 
-  /*  
+  /*
   -N-> sub
   -P-> To subtract fractions
   -I-> Both numerators and fractions as integers
   -R-> Improper subtracted fraction
   */
   public static String sub(int nu, int de, int nu2, int de2) {
+    if(de == 0 || de2 == 0){
+      return "0";
+    }
     int sub = (nu * de2) - (nu2 * de);
     int sub2 = (de * de2);
     String t = sub +"/"+ sub2;
     return t;
   }// end sub method
 
-  /*  
+  /*
   -N-> mult
   -P-> To multiply fractions
   -I-> Both numerators and fractions as integers
   -R-> Improper multiplied fraction
   */
   public static String mult(int nu, int de, int nu2, int de2) {
+    if(de == 0 || de2 == 0){
+      return "0";
+    }
     int mult = (nu * nu2);
     int mult2 = (de * de2);
     String t = mult +"/"+ mult2;
     return t;
   }// end mult method
-  
-  /*  
+
+  /*
   -N-> div
   -P-> To divide fractions
   -I-> Both numerators and fractions as integers
   -R-> Improper divided fraction
   */
   public static String div(int nu, int de, int nu2, int de2) {
+    if(de == 0 || de2 == 0){
+      return "0";
+    }
     int div = (nu * de2);
     int div2 = (nu2 * de);
     String t = div +"/"+ div2;
     return t;
   }// end div method
-  
-  /*  
+
+  /*
   -N-> simp
   -P-> To divide fractions
   -I-> Both numerators and fractions as integers
@@ -201,7 +228,7 @@ public class FracCalc {
   */
   public static String simp(int gcd, int nu, int de) {
     int sNu;
-    int sDe; 
+    int sDe;
     if(nu%gcd == 0) {
       sNu = nu / gcd;
     }
@@ -220,7 +247,7 @@ public class FracCalc {
     else {
       return sNu +"/"+ sDe;
     }
-    
+
   }// end simp method
 
   /*
@@ -236,7 +263,7 @@ public class FracCalc {
         gcd = i;
       }
     }
-    
+
     return gcd;
   }//end GCD method
 
@@ -248,7 +275,7 @@ public class FracCalc {
   */
   public static int convertStr(String a) {
     int conv = Integer.parseInt(a);
-    
+
     return conv;
   }//end convertStr method
 }//end class
