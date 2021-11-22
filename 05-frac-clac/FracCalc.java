@@ -2,193 +2,253 @@ import java.util.*;
 
 public class FracCalc {
     public static void main(String[] args){
-        // TODO: Read the input from the user and call produceAnswer with an equation
+    //New Scanner Instance
+    Scanner s = new Scanner(System.in);
+    System.out.println("Welcome! You have accessed a fraction calculator.");
 
-        // Checkpoint 1: Create a Scanner, read one line of input, pass that input to produceAnswer, print the result.
-        Scanner s = new Scanner(System.in);
-        System.out.println("Welcome! You have accessed a fraction calculator.");
+    //User input
+    boolean r = true;
+    while(r) {
+      System.out.println("What is your fraction in form: x_x/x or x/x (op.) x_x/x or x/x");
+      String frac = s.nextLine();
+      frac = frac.toLowerCase();
 
-        // Checkpoint 2: Accept user input multiple times.
-        boolean r = true;
-        while(r) {
-          System.out.println("What is your fraction in form: x_x/x or x/x (op.) x_x/x or x/x");
-          String frac = s.nextLine();
-          frac = frac.toLowerCase();
-
-          if(frac.equals("quit")){
-            System.out.println("Closing program...");
-            r = false;
-          }
-          else if(!(frac.equals("quit"))) {
-            System.out.println("\n" + produceAnswer(frac));
-          }
-        }
-
-        s.close();
-    }//end main method
-
-    /**
-     * produceAnswer - This function takes a String 'input' and produces the result.
-     * @param input - A fraction string that needs to be evaluated.  For your program, this will be the user input.
-     *      Example: input ==> "1/2 + 3/4"
-     * @return the result of the fraction after it has been calculated.
-     *      Example: return ==> "1_1/4"
-     */
-    public static String produceAnswer(String input){
-        // TODO: Implement this function to produce the solution to the input
-        // Checkpoint 1: Return the second operand.  Example "4/5 * 1_2/4" returns "1_2/4".
-
-        String firstOper = input.substring(0, input.indexOf(" "));//FRAC1
-        String oper = input.substring(input.indexOf(" ")+ 1, input.lastIndexOf(" "));
-        String secOper = input.substring(input.indexOf(" ")+ 3);//FRAC2
-
-        // Checkpoint 2: Return the second operand as a string representing each part.
-        //               Example "4/5 * 1_2/4" returns "whole:1 numerator:2 denominator:4"
-        String whole = "";
-        String nume = "";
-        String demo = firstOper.substring(firstOper.indexOf("/")+ 1);
-
-        String whole2 = "";
-        String nume2 = "";
-        String demo2 = secOper.substring(secOper.lastIndexOf("/")+ 1);
-
-        // **NUMBER SEPARATION FOR FIRST OPERAND**
-        if(firstOper.contains("_") == false && firstOper.contains("/") == false) {
-          whole = "0";
-          nume = firstOper;
-          demo = "1";
-        }
-        else if (firstOper.contains("_") == true && firstOper.contains("/") == true) {
-          whole = firstOper.substring(0, firstOper.indexOf("_"));
-          nume = firstOper.substring(firstOper.indexOf("_")+ 1, firstOper.indexOf("/"));
-        }
-        else {
-          whole = "0";
-          nume = firstOper.substring(0, firstOper.indexOf("/"));
-        }
-
-        // **NUMBER SEPARATION FOR SECOND OPERAND**
-        if(secOper.contains("_") == false && secOper.contains("/") == false) {
-            whole2 = "0";
-            nume2 = secOper;
-            demo2 = "1";
-        }
-        else if(secOper.contains("_") == true && secOper.contains("/") == true) {
-            whole2 = secOper.substring(0, secOper.indexOf("_"));
-            nume2 = secOper.substring(secOper.indexOf("_")+ 1, secOper.indexOf("/"));
-        }
-        else {
-            whole2 = "0";
-            nume2 = secOper.substring(0, secOper.indexOf("/"));
-        }
-
-        int wholeInt = convertStr(whole);
-        int numeInt = convertStr(nume);
-        int demoInt = convertStr(demo);
-
-        int wholeInt2 = convertStr(whole2);
-        int numeInt2 = convertStr(nume2);
-        int demoInt2 = convertStr(demo2);
-
-        if(wholeInt != 0 && wholeInt2 != 0) {
-          numeInt = toImp(wholeInt, numeInt, demoInt);
-          numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
-        }
-        else if(wholeInt != 0) {
-          numeInt = toImp(wholeInt, numeInt, demoInt);
-
-        }
-        else if(wholeInt2 != 0) {
-          numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
-
-        }
-
-        // Checkpoint 3: Evaluate the formula and return the result as a fraction.
-        //               Example "4/5 * 1_2/4" returns "6/5".
-        //               Note: Answer does not need to be reduced, but it must be correct.
-
-        if(oper.equals("+")) {
-          return "Calculated fraction = " + add(numeInt, demoInt, numeInt2, demoInt2);
-        }
-        else if(oper.equals("-")) {
-          return "Calculated fraction = " + sub(numeInt, demoInt, numeInt2, demoInt2);
-        }
-        /*
-        else if(oper.equals("*")) {
-
-        }
-        else if(oper.equals("/")) {
-
-        }
-        */
-        // Final project: All answers must be reduced.
-        //               Example "4/5 * 1_2/4" returns "1_1/5".
-
-        return "";
-
-    }//end produceAnswer method
-
-    public static int toImp(int w, int n , int d) {
-      int newnume = w * d;
-      newnume = newnume + n;
-      return newnume;
+      if(frac.equals("quit")){
+        System.out.println("Closing program...");
+        r = false;
+      }
+      else if(!(frac.equals("quit"))) {
+        System.out.println("\n" + produceAnswer(frac));
+      }
     }
 
-    public static int add(int nu, int de, int nu2, int de2) {
-      int add = (nu * de2 + nu2 * de);
-      add = add / (de * de2);
-      return add;
+    s.close();
+  }//end main method
+
+  /*
+  -N-> produceAnswer 
+  -P-> To Calculate the sum, diff, product, or quotient of two given fractions
+  -I-> The whole expression of two fractions, String
+  -R-> Returns a String with the calculated fraction result
+  */
+  public static String produceAnswer(String input){
+    String sim;
+
+    //Separating the fraction into three mathematical parts
+    String firstOper = input.substring(0, input.indexOf(" "));//FRAC1
+    String oper = input.substring(input.indexOf(" ")+ 1, input.lastIndexOf(" "));
+    String secOper = input.substring(input.indexOf(" ")+ 3);//FRAC2
+
+    //Fraction seperation
+    String whole = "";
+    String nume = "";
+    String demo = firstOper.substring(firstOper.indexOf("/")+ 1);
+
+    String whole2 = "";
+    String nume2 = "";
+    String demo2 = secOper.substring(secOper.lastIndexOf("/")+ 1);
+
+    // **NUMBER SEPARATION FOR FIRST OPERAND**
+    if(firstOper.contains("_") == false && firstOper.contains("/") == false) {
+      whole = "0";
+      nume = firstOper;
+      demo = "1";
+    }
+    else if (firstOper.contains("_") == true && firstOper.contains("/") == true) {
+      whole = firstOper.substring(0, firstOper.indexOf("_"));
+      nume = firstOper.substring(firstOper.indexOf("_")+ 1, firstOper.indexOf("/"));
+    }
+    else {
+      whole = "0";
+      nume = firstOper.substring(0, firstOper.indexOf("/"));
     }
 
-    public static int sub(int nu, int de, int nu2, int de2) {
-      int sub = (nu * de2 - nu2 * de);
-      sub = sub / (de * de2);
-      return sub;
+    // **NUMBER SEPARATION FOR SECOND OPERAND**
+    if(secOper.contains("_") == false && secOper.contains("/") == false) {
+      whole2 = "0";
+      nume2 = secOper;
+      demo2 = "1";
+    }
+    else if(secOper.contains("_") == true && secOper.contains("/") == true) {
+      whole2 = secOper.substring(0, secOper.indexOf("_"));
+      nume2 = secOper.substring(secOper.indexOf("_")+ 1, secOper.indexOf("/"));
+    }
+    else {
+      whole2 = "0";
+      nume2 = secOper.substring(0, secOper.indexOf("/"));
     }
 
-    public static int mult(int nu, int de, int nu2, int de2) {
+    //Convert String to Int
+    int wholeInt = convertStr(whole);
+    int numeInt = convertStr(nume);
+    int demoInt = convertStr(demo);
 
+    int wholeInt2 = convertStr(whole2);
+    int numeInt2 = convertStr(nume2);
+    int demoInt2 = convertStr(demo2);
 
-
-      return 0;
+    //Checks for 0
+    if(demoInt2 == 0 || demoInt == 0){
+      System.out.println("ERROR: Cannot divide by 0...");
+      System.exit(0);
     }
+    else {
 
-    public static int div(int wh, int nu, int de, int wh2, int nu2, int de2) {
+      //Convert to improper fraction
+      //Makes it easier to do calculations
+      if(wholeInt != 0 && wholeInt2 != 0) {
 
+        numeInt = toImp(wholeInt, numeInt, demoInt);
+        numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
+      }
+      else if(wholeInt != 0) {
 
+        numeInt = toImp(wholeInt, numeInt, demoInt);
+      }
+      else if(wholeInt2 != 0) {
 
-      return 0;
+        numeInt2 = toImp(wholeInt2, numeInt2, demoInt2);
+      }
+
+      //Returns simplified result from both fractions
+      if(oper.equals("+")) {
+        return"Calculated result = "+ add(numeInt, demoInt, numeInt2, demoInt2);
+      }
+      else if(oper.equals("-")) {
+        return "Calculated result = "+ sub(numeInt, demoInt, numeInt2, demoInt2);
+      }
+      else if(oper.equals("*")) {
+        return "Calculated result = "+ mult(numeInt, demoInt, numeInt2, demoInt2);
+      }
+      else {
+        return "Calculated result = "+ div(numeInt, demoInt, numeInt2, demoInt2);
+      }
+
+      //Does the final string to integer conversion to return a string
     }
+    return "";
+  }//end produceAnswer method
 
-    // TODO: Fill in the space below with helper methods
+  /*
+  -N-> ToImp
+  -P-> To put a mixed fraction into a improper fraction
+  -I-> Whole, Numerator, Denomator as integers
+  -R-> Numerator for improper fraction as a integer
+  */
+  public static int toImp(int w, int n , int d) {
+    int newnume = w * d;
+    newnume = newnume + n;
+    return newnume;
+  }// end toImp method
 
-    /**
-     * greatestCommonDivisor - Find the largest integer that evenly divides two integers.
-     *      Use this helper method in the Final Checkpoint to reduce fractions.
-     * @param a - First integer.
-     * @param b - Second integer.
-     * @return The GCD.
-     */
-    public static int greatestCommonDivisor(int a, int b){
+  /*  
+  -N-> add
+  -P-> To add fractions
+  -I-> Both numerators and fractions as integers
+  -R-> Improper added fraction
+  */
+  public static String add(int nu, int de, int nu2, int de2) {
+    int add = (nu * de2) + (nu2 * de);
+    int add2 = (de * de2);
+    String t = add +"/"+ add2;
+    return t;
+  }// end add method
 
-      return 0;
-    }//end greatestCommonDivisor method
+  /*  
+  -N-> sub
+  -P-> To subtract fractions
+  -I-> Both numerators and fractions as integers
+  -R-> Improper subtracted fraction
+  */
+  public static String sub(int nu, int de, int nu2, int de2) {
+    int sub = (nu * de2) - (nu2 * de);
+    int sub2 = (de * de2);
+    String t = sub +"/"+ sub2;
+    return t;
+  }// end sub method
 
-    /**
-     * leastCommonMultiple - Find the smallest integer that can be evenly divided by two integers.
-     *      Use this helper method in Checkpoint 3 to evaluate expressions.
-     * @param a - First integer.
-     * @param b - Second integer.
-     * @return The LCM.
-     */
-    public static int leastCommonMultiple(int a, int b){
+  /*  
+  -N-> mult
+  -P-> To multiply fractions
+  -I-> Both numerators and fractions as integers
+  -R-> Improper multiplied fraction
+  */
+  public static String mult(int nu, int de, int nu2, int de2) {
+    int mult = (nu * nu2);
+    int mult2 = (de * de2);
+    String t = mult +"/"+ mult2;
+    return t;
+  }// end mult method
+  
+  /*  
+  -N-> div
+  -P-> To divide fractions
+  -I-> Both numerators and fractions as integers
+  -R-> Improper divided fraction
+  */
+  public static String div(int nu, int de, int nu2, int de2) {
+    int div = (nu * de2);
+    int div2 = (nu2 * de);
+    String t = div +"/"+ div2;
+    return t;
+  }// end div method
+  
+  /*  
+  -N-> simp
+  -P-> To divide fractions
+  -I-> Both numerators and fractions as integers
+  -R-> Improper divided fraction
+  */
+  public static String simp(int gcd, int nu, int de) {
+    int sNu;
+    int sDe; 
+    if(nu%gcd == 0) {
+      sNu = nu / gcd;
+    }
+    else {
+      sNu = nu % gcd;
+    }
+    if(de%gcd == 0) {
+      sDe = de / gcd;
+    }
+    else {
+      sDe = de % gcd;
+    }
+    if(sNu%sDe == 0) {
+      return (sNu / sDe) + "";
+    }
+    else {
+      return sNu +"/"+ sDe;
+    }
+    
+  }// end simp method
 
-      return 0;
-    }//end leastCommonMultiple
+  /*
+  -N-> GCD
+  -P-> Find the greatest common divisor
+  -I-> Numerator and Denomator as integers
+  -R-> Greatest common divisor as integer
+  */
+  public static int GCD(int nu, int de){
+    int gcd = 1;
+    for(int i = 1; i <= de && i <= nu; i++) {
+      if(nu%i == 0 && de%i == 0) {
+        gcd = i;
+      }
+    }
+    
+    return gcd;
+  }//end GCD method
 
-    public static int convertStr(String a) {
-      int conv = Integer.parseInt(a);
-
-      return conv;
-    }//end convertStr method
+  /*
+  -N-> convertStr
+  -P-> Convert from Str to Int type
+  -I-> A string
+  -R-> An integer
+  */
+  public static int convertStr(String a) {
+    int conv = Integer.parseInt(a);
+    
+    return conv;
+  }//end convertStr method
 }//end class
