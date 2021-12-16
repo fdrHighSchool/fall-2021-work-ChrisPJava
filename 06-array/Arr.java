@@ -4,20 +4,30 @@ import java.util.Arrays;
 public class Arr {
     public static void main(String[] args) {
         int arr[] = {6,2,3,4,5,6,7,8,9,10}; // Mean test case
-        int arr3[] = {1,1,3,4,5,6,7,8,9,10}; // Mode and Range test case
+        int arr3[] = {2,2,3,4,5,6,7,8,9,10}; // Mode and Range test case
         double arr2[] = new double[100]; // Mean w/ random values test case
         double total = 0.0;
 
-        // For loop traverses through each value of the list and adds the numbers to total 
+        // For loop traverses through each value of the list and adds the numbers to total
         for(int i = 0; i < arr.length; i++) {
             total = total + arr[i];
-        }      
+        }
 
         // Outputs
-        System.out.println("Average: "+ total / arr.length +"\n");
-        System.out.println("Average: "+ mean(arr2) +"\n");
-        System.out.println("Mode: "+ mode(arr3) +"\n");
-        System.out.println("Range: "+ range(arr3) +"\n");
+        if(mode(arr3) == 0) {
+          System.out.println("Average: "+ total / arr.length +"\n");
+          System.out.println("Average: "+ mean(arr2) +"\n");
+          System.out.println("Mode: No Mode\n");
+          System.out.println("Range: "+ range(arr3) +"\n");
+          System.out.println(sort(arr3));
+        }
+        else{
+          System.out.println("Average: "+ total / arr.length +"\n");
+          System.out.println("Average: "+ mean(arr2) +"\n");
+          System.out.println("Mode: "+ mode(arr3) +"\n");
+          System.out.println("Range: "+ range(arr3) +"\n");
+          System.out.println(sort(arr3));
+        }
     }
 
     public static double mean(double[] arr) {
@@ -38,7 +48,7 @@ public class Arr {
         // Returns the mean
         return total / arr.length;
     }// end mean method
-    
+
     public static int mode(int arr[]) {
         // New array storing with the length of the greatest number
         // The added 2 is for not having 0 to the greatest number
@@ -49,7 +59,11 @@ public class Arr {
            freqArr[arr[i]]++;
         }
 
-        // Fl that finds what index has the greatest value and take i 
+        // If all values of freqArr is 1, there is no mode
+        if(max(freqArr) == 1) {
+          return 0;
+        }
+        // Fl that finds what index has the greatest value and take i
         // Because i would used as the value on accessing the indexes of an array
         int index = 0;
         for(int i = 0; i < freqArr.length; i++) {
@@ -57,8 +71,7 @@ public class Arr {
                 index = i;
                 break; // Breaks once the index of the number that repeats most is found
             }
-        }  
-
+        }
         // Returns the mode
         return index;
     }// end mode method
@@ -68,9 +81,21 @@ public class Arr {
     }// end range method
 
     public static int median(int[] arr) {
+        /*
+        int median = 0;
 
+        if(arr.length != 0) {
+
+        }
+        */
         return 0;
     }// end median method
+
+    public static int[] sort(int[] arr) {
+      int sortArr[] = new int[arr.length];
+
+      return sortArr;
+    }
 
     public static int max(int[] arr) {
         int max = 0;
@@ -81,13 +106,13 @@ public class Arr {
                 max = arr[i];
             }
         }
-        
+
         // Returns the greatest number from the array
         return max;
     }// end max method
 
     public static int min(int[] arr) {
-        // An extreme value because a number like this wouldn't seen in the arrays given 
+        // An extreme value because a number like this wouldn't seen in the arrays given
         int min = 999999999;
         // Fl that compares each index of the array to the max variable
         // The max variable gets updated if a greater value is found
