@@ -67,6 +67,11 @@ public class Arr {
         return (max(arr) - min(arr));// ># - <#
     }// end range method
 
+    public static int median(int[] arr) {
+
+        return 0;
+    }// end median method
+
     public static int max(int[] arr) {
         int max = 0;
         // Fl that compares each index of the array to the max variable
