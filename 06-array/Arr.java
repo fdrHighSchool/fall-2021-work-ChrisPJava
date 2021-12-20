@@ -5,7 +5,7 @@ public class Arr {
     public static void main(String[] args) {
         int arr[] = {6,2,3,4,5,6,7,8,9,10}; // Mean test case
         int arr3[] = {2,2,3,4,5,6,7,8,9,10}; // Mode and Range test case
-        int arr4[] = {13,19,17,16,21,22};// 1,2,3,4 len 4
+        int arr4[] = {13,19,17,16,21,22};// Median test case
         double arr2[] = new double[100]; // Mean w/ random values test case
         double total = 0.0;
 
@@ -15,11 +15,11 @@ public class Arr {
         }
 
         // Outputs
-        System.out.println("Average: "+ total / arr.length +"\n");
-        System.out.println("Average: "+ mean(arr2) +"\n");
-        System.out.println("Mode: "+ mode(arr3) +"\n");
-        System.out.println("Range: "+ range(arr3) +"\n");
-        System.out.println("Median: "+ median(arr4) +"\n");
+        System.out.println("Average: "+ total / arr.length +"\n");// Mean, personal number set
+        System.out.println("Average: "+ mean(arr2) +"\n");// Mean
+        System.out.println("Mode: "+ mode(arr3) +"\n");// Mode
+        System.out.println("Range: "+ range(arr3) +"\n");// Range
+        System.out.println("Median: "+ median(arr4) +"\n");// Median
     }
 
     public static double mean(double[] arr) {
