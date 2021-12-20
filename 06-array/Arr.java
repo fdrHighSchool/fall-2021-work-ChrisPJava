@@ -5,6 +5,7 @@ public class Arr {
     public static void main(String[] args) {
         int arr[] = {6,2,3,4,5,6,7,8,9,10}; // Mean test case
         int arr3[] = {2,2,3,4,5,6,7,8,9,10}; // Mode and Range test case
+        int arr4[] = {13,19,17,16,21,22};// 1,2,3,4 len 4
         double arr2[] = new double[100]; // Mean w/ random values test case
         double total = 0.0;
 
@@ -14,20 +15,11 @@ public class Arr {
         }
 
         // Outputs
-        if(mode(arr3) == 0) {
-          System.out.println("Average: "+ total / arr.length +"\n");
-          System.out.println("Average: "+ mean(arr2) +"\n");
-          System.out.println("Mode: No Mode\n");
-          System.out.println("Range: "+ range(arr3) +"\n");
-          System.out.println(sort(arr3));
-        }
-        else{
-          System.out.println("Average: "+ total / arr.length +"\n");
-          System.out.println("Average: "+ mean(arr2) +"\n");
-          System.out.println("Mode: "+ mode(arr3) +"\n");
-          System.out.println("Range: "+ range(arr3) +"\n");
-          System.out.println(sort(arr3));
-        }
+        System.out.println("Average: "+ total / arr.length +"\n");
+        System.out.println("Average: "+ mean(arr2) +"\n");
+        System.out.println("Mode: "+ mode(arr3) +"\n");
+        System.out.println("Range: "+ range(arr3) +"\n");
+        System.out.println("Median: "+ median(arr4) +"\n");
     }
 
     public static double mean(double[] arr) {
@@ -59,9 +51,10 @@ public class Arr {
            freqArr[arr[i]]++;
         }
 
-        // If all values of freqArr is 1, there is no mode
+        // If all values of freqArr is 1, there is no mode 
         if(max(freqArr) == 1) {
-          return 0;
+          // Returns extreme value 
+          return -1010101;
         }
         // Fl that finds what index has the greatest value and take i
         // Because i would used as the value on accessing the indexes of an array
@@ -80,22 +73,44 @@ public class Arr {
         return (max(arr) - min(arr));// ># - <#
     }// end range method
 
-    public static int median(int[] arr) {
-        /*
-        int median = 0;
+    public static double median(int[] arr) {
+        int sortArr[] = sort(arr);
 
-        if(arr.length != 0) {
-
+        if(sortArr.length % 2 == 0){
+            // If even length, returns the two most middle value's average
+            return ((double)(sortArr[((sortArr.length)/2)-1] + sortArr[((sortArr.length)/2)])) / 2;
         }
-        */
+        else if(sortArr.length % 2 == 1) {
+            // If odd length, returns middle number
+            return (sortArr[(sortArr.length-1)/2]);
+        }
+
+        // Returns 0 if none of the conditions are satisfied
         return 0;
     }// end median method
 
     public static int[] sort(int[] arr) {
-      int sortArr[] = new int[arr.length];
-
-      return sortArr;
-    }
+        for(int i = 0; i < arr.length; i++) {
+            int min = arr[i];
+            int minLoc = i;
+            int temp = arr[i];
+      
+            // Searches for the values
+            for (int j = i + 1; j < arr.length; j++) {
+              // The new min is found
+              if(arr[j] < min) {
+                min = arr[j];
+                minLoc = j;
+              } 
+            }
+      
+            arr[i] = min;
+            arr[minLoc] = temp;
+        }
+      
+        // Returns sorted array
+        return arr;
+    }// end sort method
 
     public static int max(int[] arr) {
         int max = 0;
