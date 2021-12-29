@@ -28,7 +28,7 @@ public class BinConvert {
         for(int i = 0; i < b.length(); i++) {
             // Will add values if there is 1 
             if(b.substring(i,i+1).equals("1")) {
-                // Since binary is base two, its two to the power of the index in this case
+                // Since binary is base two, it's two to the power of the index in this case
                 comp = (int)(Math.pow(2,i));
                 // Decimal value, trouble with just +=ing with one variable
                 total = total + comp;
@@ -58,7 +58,7 @@ NOTE:
 
 The reason why I reversed the string is because 
 I first saw that the indexes 
-correlated with the base of 
-two powers for the binary numbers.
+correlated with the two base 
+powers for the binary numbers.
 
 */
