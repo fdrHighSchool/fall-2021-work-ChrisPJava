@@ -23,6 +23,7 @@ public class BinConvert {
     } // end main method
 
     public static int binToDec(String b) {
+        // I found a new of making multiple variables of the same type into one line
         int total = 0, comp = 0;
 
         for(int i = 0; i < b.length(); i++) {
