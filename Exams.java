@@ -25,7 +25,8 @@ public class Exams {
 
     // display the first 5 grades
     System.out.println(Arrays.toString(sampleStudent));
-    System.out.println(aG(sampleStudent, 6, num));
+    System.out.println(Arrays.toString(aG(sampleStudent, 6, num)));
+    System.out.println(Arrays.toString(gB(aG(sampleStudent, 6, num), num)));
   } // end main method
 
 /*
@@ -36,16 +37,13 @@ to the sample student’s set of grades.
   public static int[] aG(int arr[], int a, int g) {
     int gradeArray[] = new int[a];
 
-    for(int j = 0; j < 1; j++) {
-        for(int i = 0; i < arr.length; i++) {
-            gradeArray[i] = arr[i];
-        }
-        gradeArray[a-1] = g;
+    for(int i = 0; i < arr.length; i++) {
+      gradeArray[i] = arr[i];
     }
-
-
+    
+    gradeArray[a-1] = g;
     return gradeArray;
-  }
+  }// end aG method
 
 /*
 B) Write a method that takes the original set
@@ -55,9 +53,20 @@ If it is not, then the original 5 grades remain.
 */
 
   public static int[] gB(int arr[], int a) {
-    
+    int min = 1000;
 
+    for(int grade : arr) {
+      if(grade < min) {
+        min = grade;
+      }
+    }
 
-  }
+    for(int i = 0; i < arr.length-1; i++) {
+      if(arr[i] == min) {
+        arr[i] = a;
+      }
+    }
 
+    return arr;
+  }// end gB method
 } // end class
