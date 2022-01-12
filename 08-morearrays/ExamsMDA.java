@@ -7,13 +7,13 @@ public class ExamsMDA {
 
     // Fill/Access
     for(int j = 0; j < arr.length; j++) {
-      for(int i = 0; i < 5; i++) {
+      for(int i = 0; i < arr[0].length; i++) {
         System.out.println(arr[j][i]+(int)(Math.random() * 9));
       }
     }
 
     // Print
-    System.out.println(arr[0][1]);
+    System.out.println(Arrays.deepToString(arr));
 
   }// end main method
 }// end class
