@@ -5,25 +5,29 @@ public class connectFour {
     Scanner s = new Scanner(System.in);
     String[][] board = new String[6][7];
     boolean cont = true;
-    String col;
+    int round = 0;
     int col2 = 0;
+    String col;
 
     fillBoard(board);
 
     while(cont) {
       // Starts with X and then follows O, X, O, X, ...
-      System.out.println("What is you column?");
+      System.out.println("\nWhat is you column?");
       col = s.nextLine();
       col = col.toLowerCase();
 
+      System.out.println("");
+
       if(col.equals("quit")) {
-        System.exit(0);
         cont = false;
+        System.exit(0);
       }
 
       col2 = Integer.parseInt(col);
 
-      displayBoard(round(board, col2));
+      displayBoard(round(board, col2, round));
+      round++;
     }
   } // end main method
 
@@ -46,27 +50,47 @@ public class connectFour {
     } 
   } // end displayBoard method
 
-  public static String[][] round(String[][] board, int c) {
-    String x = "X";
-    String o = "O";
-    int round = 0;
+  public static String[][] round(String[][] board, int c, int round) {
+    Scanner s = new Scanner(System.in);
+    String choice = "";
+    int colFill = 0;
     c = c - 1;
 
-    for(int row = 0; row < board.length; row++) {
-      for(int col = board[row].length-1; col > 0; col--) {
-        if(row == c) {
-          if(board[row][col] != "[X]" || board[row][col] != "[O]") {
-            board[row][col] = "["+ x +"]";
-          }
-          row++;
-        }
-      } 
+    if(round % 2 == 0) {
+      choice = "[X]"; 
+    }
+    else {
+      choice = "[O]";
     }
 
+    for(int row = board.length-1; row >= 0; row--) {
+      for(int col = board[row].length-1; col >= 0; col--) {
+        if(c < 0 || c > board[0].length-1) {
+          while(c < 0 || c > board[0].length-1) {
+            System.out.println("Please type in a valid column.");
+            c = s.nextInt();
+            System.out.println("");
+          }
+        }
+
+        if(row == board.length-1 && col == c) {
+          if(board[row][c] == "[ ]") {
+            board[row][c] = choice;
+          }
+          else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
+            board[(row)-(colFill+1)][c] = choice;
+          }
+
+          for(int i = 0; i < board.length; i++) {
+            if(board[i][c] == "[X]" || board[i][c] == "[O]") {
+              colFill++;
+            }
+          }
+        }
+      }
+    } 
+  
+    colFill = 0;
     return board;
   }// end round method
 } // end class
-
-/*
-
-*/
