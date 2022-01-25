@@ -26,28 +26,34 @@ public class connectFour {
 
       col2 = Integer.parseInt(col);
 
+      clrScrn();
       displayBoard(round(board, col2, round));
       round++;
     }
   } // end main method
 
+  public static void clrScrn() {
+    System.out.println("\033[H\033[2J");
+    System.out.flush();
+  }
+
   public static String[][] fillBoard(String[][] board) {
     for(int row = 0; row < board.length; row++) {
       for(int col = 0; col < board[row].length; col++) {
         board[row][col] = "[ ]";
-      }   
+      }
     }
 
     return board;
   } // end fillBoard method
 
-  public static void displayBoard(String[][] board) { 
+  public static void displayBoard(String[][] board) {
     for(int row = 0; row < board.length; row++) {
       for(int col = 0; col < board[row].length; col++) {
         System.out.print(board[row][col] + " ");
-      } 
+      }
       System.out.println();
-    } 
+    }
   } // end displayBoard method
 
   public static String[][] round(String[][] board, int c, int round) {
@@ -57,7 +63,7 @@ public class connectFour {
     c = c - 1;
 
     if(round % 2 == 0) {
-      choice = "[X]"; 
+      choice = "[X]";
     }
     else {
       choice = "[O]";
@@ -78,19 +84,22 @@ public class connectFour {
             board[row][c] = choice;
           }
           else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
-            board[(row)-(colFill+1)][c] = choice;
+            for(int i = 0; i < board.length; i++) {
+              if(board[i][c] == "[ ]") {
+                colFill++;
+              }
+            }
+
+            board[(colFill-2)][c] = choice;
           }
 
-          for(int i = 0; i < board.length; i++) {
-            if(board[i][c] == "[X]" || board[i][c] == "[O]") {
-              colFill++;
-            }
-          }
+          System.out.println(colFill);
         }
       }
-    } 
-  
+    }
+
     colFill = 0;
     return board;
   }// end round method
 } // end class
+
