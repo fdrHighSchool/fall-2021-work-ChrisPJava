@@ -84,7 +84,7 @@ public class connectFour {
             board[row][c] = choice;
           }
           else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
-            for(int i = 0; i < board.length; i++) {
+            for(int i = 0; i <= board.length-1; i++) {
               if(board[i][c] == "[ ]") {
                 colFill--;
               }
