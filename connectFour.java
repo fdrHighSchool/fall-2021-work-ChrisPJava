@@ -59,7 +59,7 @@ public class connectFour {
   public static String[][] round(String[][] board, int c, int round) {
     Scanner s = new Scanner(System.in);
     String choice = "";
-    int colFill = 0;
+    int colFill = 6;
     c = c - 1;
 
     if(round % 2 == 0) {
@@ -86,11 +86,11 @@ public class connectFour {
           else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
             for(int i = 0; i < board.length; i++) {
               if(board[i][c] == "[ ]") {
-                colFill++;
+                colFill--;
               }
             }
 
-            board[(colFill-2)][c] = choice;
+            board[(board.length-1) - (colFill+1)][c] = choice;
           }
 
           System.out.println(colFill);
@@ -102,4 +102,3 @@ public class connectFour {
     return board;
   }// end round method
 } // end class
-
