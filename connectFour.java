@@ -28,6 +28,7 @@ public class connectFour {
 
       clrScrn();
       displayBoard(round(board, col2, round));
+      clrScrn();
       round++;
     }
   } // end main method
@@ -84,21 +85,21 @@ public class connectFour {
             board[row][c] = choice;
           }
           else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
+            System.out.println(colFill);
             for(int i = 0; i <= board.length-1; i++) {
               if(board[i][c] == "[ ]") {
                 colFill--;
               }
             }
 
+            System.out.println(colFill);
             board[(board.length-1) - (colFill+1)][c] = choice;
+            colFill = 0;
           }
-
-          System.out.println(colFill);
         }
       }
     }
 
-    colFill = 0;
     return board;
   }// end round method
 } // end class
