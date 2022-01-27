@@ -28,7 +28,6 @@ public class connectFour {
 
       clrScrn();
       displayBoard(round(board, col2, round));
-      clrScrn();
       round++;
     }
   } // end main method
@@ -71,35 +70,33 @@ public class connectFour {
     }
 
     for(int row = board.length-1; row >= 0; row--) {
-      for(int col = board[row].length-1; col >= 0; col--) {
-        if(c < 0 || c > board[0].length-1) {
-          while(c < 0 || c > board[0].length-1) {
-            System.out.println("Please type in a valid column.");
-            c = s.nextInt();
-            System.out.println("");
-          }
+      if(c < 0 || c > board[0].length-1) {
+        while(c < 0 || c > board[0].length-1) {
+          System.out.println("Please type in a valid column.");
+          c = s.nextInt();
+          System.out.println("");
         }
+      }
 
-        if(row == board.length-1 && col == c) {
-          if(board[row][c] == "[ ]") {
-            board[row][c] = choice;
-          }
-          else if(board[row][c] != "[ ]" && board[row-1][c] == "[ ]") {
-            System.out.println(colFill);
-            for(int i = 0; i <= board.length-1; i++) {
-              if(board[i][c] == "[ ]") {
-                colFill--;
-              }
+      if(row == board.length-1) {
+        if(board[row][c] == "[ ]") {
+          board[row][c] = choice;
+        }
+        else {
+          for(int i = 0; i <= board.length-1; i++) {
+            if(board[i][c] == "[ ]") {
+              colFill--;
             }
+          }
 
-            System.out.println(colFill);
-            board[(board.length-1) - (colFill+1)][c] = choice;
-            colFill = 0;
+          while(board[row][c] != "[ ]" && board[(row-colFill)][c] == "[ ]") {
+            board[(board.length-1) - (colFill)][c] = choice;
           }
         }
       }
     }
 
+    colFill = 0;
     return board;
   }// end round method
 } // end class
